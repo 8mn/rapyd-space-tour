@@ -11,7 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, logout, db } from "../src/firebase";
 import { async } from "@firebase/util";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import Timer from "./components/Timer/Timer";
 
 function Dashboard() {
 	const [walletID, setWalletID] = useState(
@@ -32,25 +33,20 @@ function Dashboard() {
 		// fetchWalletID();
 	}, [user, loading]);
 
-	// const fetchWalletID = async() => {
-	// 	const currentUser = await getDoc(doc(db, `users/${user?.uid}`))
-	// 	// console.log()
-	// 	setWalletID(currentUser.data().wallet_id);
-	// }
 
 	let virtualAccountsArr = [];
 	const fetchvansfromDb = async () => {
 		// console.log("fetching vans from db");
-		const querySnapshot = await getDocs(collection(db, "virtual-accounts"));
-		querySnapshot.forEach((doc) => {
-			// console.log(doc.data());
-			//make an array of all the virtual accounts
-			virtualAccountsArr.push(doc.data());
+		onSnapshot(collection(db, "virtual-accounts"), (snapshot) => {
+			// console.log(snapshot);
+			snapshot.forEach((doc) => {
+				// console.log(doc.data());
+				//make an array of all the virtual accounts
+				virtualAccountsArr.push(doc.data());
+			});
+			setVirtualAccounts(virtualAccountsArr);
+			virtualAccountsArr = [];
 		});
-		// console.log(virtualAccounts);
-		setVirtualAccounts(virtualAccountsArr);
-
-		// console.log(vans)
 	};
 
 	const data = {
@@ -64,52 +60,9 @@ function Dashboard() {
 			console.log(res);
 		});
 	};
-	const calculateTimeLeft = () => {
-		let year = new Date().getFullYear();
-		let difference = +new Date(`10/01/${year}`) - +new Date();
-
-		let timeLeft = {};
-
-		if (difference > 0) {
-			timeLeft = {
-				days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-				hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-				minutes: Math.floor((difference / 1000 / 60) % 60),
-				seconds: Math.floor((difference / 1000) % 60),
-			};
-		}
-
-		return timeLeft;
-	};
-
-	
-	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-	const [year] = useState(new Date().getFullYear());
-	const timerComponents = [];
-
-	Object.keys(timeLeft).forEach((interval) => {
-		if (!timeLeft[interval]) {
-			return;
-		}
-
-		timerComponents.push(
-			<span>
-				{timeLeft[interval]} {interval}{" "}
-			</span>
-		);
-	});
 
 
 
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setTimeLeft(calculateTimeLeft());
-		}, 1000);
-
-
-		return () => clearTimeout(timer);
-	});
 
 	return (
 		<div className={Style.App}>
@@ -122,13 +75,7 @@ function Dashboard() {
 					{/* {console.log(walletID ? walletID : "No wallet id found")} */}
 					<div className="timeuntilLaunch">
 						<h1>Time until launch</h1>
-						<div>
-							{timerComponents.length ? (
-								timerComponents
-							) : (
-								<span>Time's up!</span>
-							)}
-						</div>
+						<Timer />
 					</div>
 					<div className="paymentStatus">
 						<p>Pay the deposit: $50,000</p>
@@ -137,8 +84,8 @@ function Dashboard() {
 
 					<RequestVirtualAccount
 						walletID={walletID}
-						setvirtualAccount={setvirtualAccount}
-						setIssuedBankAccount={setIssuedBankAccount}
+						// setvirtualAccount={setvirtualAccount}
+						// setIssuedBankAccount={setIssuedBankAccount}
 					/>
 					<div className={Style.availableAccounts}>
 						{/* {console.log(virtualAccount)} */}

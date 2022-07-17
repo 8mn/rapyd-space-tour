@@ -29,9 +29,9 @@ const RequestVirtualAccount = ({
 			.post("http://localhost:5000/request-virtual-account", data)
 			.then((res) => {
 				console.log(res);
-				setvirtualAccount(res.data.body.data.bank_account);
+				// setvirtualAccount(res.data.body.data.bank_account);
 				addVanToDb(res.data.body.data.bank_account);
-				setIssuedBankAccount(res.data.body.data.id);
+				// setIssuedBankAccount(res.data.body.data.id);
 			});
 	};
 
