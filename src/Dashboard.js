@@ -19,6 +19,7 @@ import {
 	updateDoc,
 } from "firebase/firestore";
 import Timer from "./components/Timer/Timer";
+import Ticket from "./components/Ticket/Ticket";
 
 function Dashboard() {
 	const [walletID, setWalletID] = useState(
@@ -133,7 +134,7 @@ function Dashboard() {
 		[Style.paymentInComplete]: !paymentCompleted,
 	});
 
-	// const DepositClass = ;
+
 
 	return (
 		<div className={Style.App}>
@@ -156,7 +157,7 @@ function Dashboard() {
 							{}
 						</div>
 						<div className={Style.timeuntilLaunch}>
-							<h1>Time until launch</h1>
+							<h1>TIME UNTIL LAUNCH</h1>
 							<Timer />
 						</div>
 
@@ -168,101 +169,125 @@ function Dashboard() {
 							<div>Pay the rest before launch($100,000)</div>
 						</div> */}
 
-						<div className={Style.paymentStatus}>
-							<div
-								className={cx(Style.amount, {
-									[Style.depositPaid]: userDetails.depositPaid,
-									[Style.depositNotPaid]: !userDetails.depositPaid,
-								})}
-								// style={{
-								// 	backgroundColor:
-								// 		amountToPay === 50000 ? "#fdadad" : "#ffffff",
-								// }}
-							>
-								<div className={Style.type}>DEPOSIT</div>
-								<div className={Style.price}>$50,000</div>
-								{/* <div>Make the deposit</div> */}
-							</div>
-							<div
-								className={paymentClass}
-								// style={{
-								// 	backgroundColor:
-								// 		amountToPay === 100000 ? "#fdadad" : "#ffffff",
-								// }}
-							>
-								<div className={Style.type}>REMAINING</div>
-								<div className={Style.price}>$100,000</div>
-								{/* <div>Pay the remaining amount</div> */}
-							</div>
-						</div>
-
-						<RequestVirtualAccount
-							walletID={walletID}
-							virtualAccounts={virtualAccounts}
-						/>
-						<div className={Style.availableAccounts}>
-							{/* {console.log(virtualAccount)} */}
-							{virtualAccounts.map((van) => {
-								return (
+						{paymentCompleted ? (
+							<>
+								<h1>TICKET</h1>
+								<div className={Style.ticket}>
+									<Ticket userName={userDetails.name} />
+								</div>
+							</>
+						) : (
+							<>
+								<div className={Style.paymentStatus}>
 									<div
-										className={Style.vanContainer}
-										onClick={() =>
-											setIssuedBankAccount(van.issuedBankAccountId)
-										}
-										key={van.issuedBankAccountId}
-										style={{
-											backgroundColor:
-												van.issuedBankAccountId === issuedBankAccount
-													? "#a1e3fd"
-													: "",
-
-											border:
-												van.issuedBankAccountId === issuedBankAccount
-													? "2px solid #1a769b"
-													: "",
-										}}
+										className={cx(Style.amount, {
+											[Style.depositPaid]: userDetails.depositPaid,
+											[Style.depositNotPaid]: !userDetails.depositPaid,
+										})}
+										// style={{
+										// 	backgroundColor:
+										// 		amountToPay === 50000 ? "#fdadad" : "#ffffff",
+										// }}
 									>
-										<div className={Style.field}>
-											<div className={Style.label}>Account number</div>
-											<p className={Style.data}>{van.account_number}</p>
-										</div>
-										<div className={Style.field}>
-											<div className={Style.label}>Address</div>
-											<p className={`${Style.data} ${Style.address}`}>
-												{van.address}
-											</p>
-										</div>
-										<div className={Style.field}>
-											<div className={Style.label}>bank</div>
-											<p className={`${Style.data}`}>{van.bank}</p>
-										</div>
-										<div className={Style.field}>
-											<div className={Style.label}>beneficiary name</div>
-											<p className={`${Style.data}`}>{van.beneficiary_name}</p>
-										</div>
-										<div className={Style.field}>
-											<div className={Style.label}>bic</div>
-											<p className={`${Style.data}`}>{van.bic}</p>
-										</div>
-										<div className={Style.field}>
-											<div className={Style.label}>country</div>
-											<p className={`${Style.data}`}>{van.country}</p>
-										</div>
-										<div className={Style.field}>
-											<div className={Style.label}>country iso</div>
-											<p className={`${Style.data}`}>{van.country_iso}</p>
-										</div>
-										<div className={Style.field}>
-											<div className={Style.label}>zip</div>
-											<p className={`${Style.data}`}>{van.zip}</p>
-										</div>
-
-										{/* <hr /> */}
+										<div className={Style.type}>DEPOSIT</div>
+										<div className={Style.price}>$50,000</div>
+										{/* <div>Make the deposit</div> */}
 									</div>
-								);
-							})}
-							{/* <hr /> */}
-						</div>
+									<div
+										className={paymentClass}
+										// style={{
+										// 	backgroundColor:
+										// 		amountToPay === 100000 ? "#fdadad" : "#ffffff",
+										// }}
+									>
+										<div className={Style.type}>REMAINING</div>
+										<div className={Style.price}>$100,000</div>
+										{/* <div>Pay the remaining amount</div> */}
+									</div>
+								</div>
+								<RequestVirtualAccount
+									walletID={walletID}
+									virtualAccounts={virtualAccounts}
+								/>
+								<div className={Style.availableAccounts}>
+									{/* {console.log(virtualAccount)} */}
+									{virtualAccounts.map((van) => {
+										return (
+											<div
+												className={Style.vanContainer}
+												onClick={() =>
+													setIssuedBankAccount(van.issuedBankAccountId)
+												}
+												key={van.issuedBankAccountId}
+												style={{
+													backgroundColor:
+														van.issuedBankAccountId === issuedBankAccount
+															? "#e2f7ff"
+															: "",
+
+													border:
+														van.issuedBankAccountId === issuedBankAccount
+															? "2px solid #1a769b"
+															: "",
+												}}
+											>
+												<div className={Style.field}>
+													<div className={Style.label}>Account number</div>
+													<p className={Style.data}>
+														{van.account_number}
+
+														{/* <button
+													onClick={() =>
+														navigator.clipboard.writeText(van.account_number)
+													}
+												>
+												
+												
+													copy
+												</button> */}
+													</p>
+												</div>
+												<div className={Style.field}>
+													<div className={Style.label}>Address</div>
+													<p className={`${Style.data} ${Style.address}`}>
+														{van.address}
+													</p>
+												</div>
+												<div className={Style.field}>
+													<div className={Style.label}>bank</div>
+													<p className={`${Style.data}`}>{van.bank}</p>
+												</div>
+												<div className={Style.field}>
+													<div className={Style.label}>beneficiary name</div>
+													<p className={`${Style.data}`}>
+														{van.beneficiary_name}
+													</p>
+												</div>
+												<div className={Style.field}>
+													<div className={Style.label}>bic</div>
+													<p className={`${Style.data}`}>{van.bic}</p>
+												</div>
+												<div className={Style.field}>
+													<div className={Style.label}>country</div>
+													<p className={`${Style.data}`}>{van.country}</p>
+												</div>
+												<div className={Style.field}>
+													<div className={Style.label}>country iso</div>
+													<p className={`${Style.data}`}>{van.country_iso}</p>
+												</div>
+												<div className={Style.field}>
+													<div className={Style.label}>zip</div>
+													<p className={`${Style.data}`}>{van.zip}</p>
+												</div>
+
+												{/* <hr /> */}
+											</div>
+										);
+									})}
+									{/* <hr /> */}
+								</div>
+							</>
+						)}
 
 						{/* {issuedBankAccount && ( */}
 
