@@ -17,6 +17,7 @@ body {
 body {
 	/* line-height: 1.5; */
 	-webkit-font-smoothing: antialiased;
+	
 }
 img,
 picture,
@@ -45,4 +46,8 @@ h6 {
 #root,
 #__next {
 	isolation: isolate;
+}
+
+button{
+	padding: .6rem 1rem;
 }

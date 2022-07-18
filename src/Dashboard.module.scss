@@ -1,26 +1,96 @@
-.dashboard{
+nav {
+    background-color: rgb(243, 243, 243);
+    margin-bottom: 1rem;
+    
+    .container {
+        max-width: 900px;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+        align-items: center;
+        margin: auto;
+    }
+
+    .logo{
+        text-transform: uppercase;
+    }
+
+    // button {
+    //     padding: 0.4rem 1rem;
+    //     border: none;
+    // }
+}
+
+.dashboard {
     max-width: 900px;
     margin: auto;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 
-
-    nav{
-        display:flex;
-        justify-content: space-between;
-        background-color: rgb(255, 171, 255);
+    
+    .paymentInstructions{
+        border: 2px solid rgb(243, 243, 243);
         padding: 1rem;
+    }
+
+    .ticket{
+        border: 1px dashed #ccc;
+        padding: 1rem;
+    }
+
+    .payment{
+        border-top: 2px solid #e6e6e6;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 1rem;
+    }
+
+    .timeuntilLaunch{
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        button{
-            padding: .4rem 1rem;
-            border: none;
+    }
+
+
+    .paymentStatus{
+        display: flex;
+        justify-content: space-between;
+
+        
+
+        .amount{
+            border: 1px solid #e6e6e6;
+            border-radius: 6px;
+            width: 49%;
+            padding: 1rem;
+            background-color: #f4f4f4;
+            // background-color: #EF4444;
+
+            .price{
+                font-size: 2rem;
+                font-family: monospace;
+                font-weight: 500;   
+               
+
+               
+            }
+        }
+
+        .depositPaid,.paymentCompleted{
+            background-color: #38f338;
+        }
+        .depositNotPaid{
+            background-color: #ff52e2;
+        }
+        .paymentInComplete{
+            background-color: #ff52e2;
         }
     }
 }
 
 
-.availableAccounts{
+.availableAccounts {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -28,10 +98,38 @@
     // background-color: aquamarine;
 }
 
+.selectedVan{
+    border: 2px solid blue;
+}
 
-.vanContainer{
+.vanContainer {
     border: 1px solid #e6e6e6;
-    width: 49%;
+    cursor: pointer;
+    width: 100%;
+    // flex: 1;
     border-radius: 6px;
-    padding: 1rem;
+    padding: 2rem;
+
+    &:hover{
+        background-color: #e2e2e2;
+    }
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+
+    .label{
+        font-size: .7rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .data{
+        font-size: 1rem;
+    }
+
+    .address{
+        max-width: 10rem;
+    }
+    
 }

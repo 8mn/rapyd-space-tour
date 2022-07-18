@@ -1,15 +1,11 @@
 import axios from "axios";
 import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
-import { useEffect } from "react";
+import { useState } from "react";
 import { db } from "../../firebase";
 import Style from "./RequestVirtualAccount.module.scss";
 import { v4 as uuidv4 } from "uuid";
 
-const RequestVirtualAccount = ({
-	walletID,
-	setvirtualAccount,
-	setIssuedBankAccount,
-}) => {
+const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 	const data = {
 		currency: "SGD",
 		country: "SG",
@@ -21,16 +17,19 @@ const RequestVirtualAccount = ({
 		},
 	};
 
-
-
-
 	const handleClick = () => {
 		axios
 			.post("http://localhost:5000/request-virtual-account", data)
 			.then((res) => {
 				console.log(res);
 				// setvirtualAccount(res.data.body.data.bank_account);
-				addVanToDb(res.data.body.data.bank_account);
+
+				const van = {
+					...res.data.body.data.bank_account,
+					issuedBankAccountId: res.data.body.data.id,
+				};
+
+				addVanToDb(van);
 				// setIssuedBankAccount(res.data.body.data.id);
 			});
 	};
@@ -40,11 +39,17 @@ const RequestVirtualAccount = ({
 	};
 
 	return (
-		<div className={Style.container}>
-			<h4>Available virtual accounts</h4>
+		<>
+			<div className={Style.container}>
+				<h4>Available accounts</h4>
 
-			<button onClick={handleClick}>Request VAN</button>
-		</div>
+				<button onClick={handleClick}>Request VAN</button>
+			</div>
+
+			<div className={Style.instructions}>
+				Please Make a payment to any of the following accounts
+			</div>
+		</>
 	);
 };
 

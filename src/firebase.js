@@ -62,8 +62,8 @@ const signInWithGoogle = async () => {
 				name: user.displayName,
 				authProvider: "google",
 				email: user.email,
-				wallet_id: "",
 				depositPaid: false,
+				paymentCompleted:false
 			});
 		}
 	} catch (error) {
