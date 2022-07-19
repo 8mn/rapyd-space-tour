@@ -98,7 +98,10 @@ function Dashboard() {
 
 	const simulateDepositPayment = () => {
 		axios
-			.post("http://localhost:5000/simulate-payment", AmountData)
+			.post(
+				"https://rapyd-starliner-backend.herokuapp.com/simulate-payment",
+				AmountData
+			)
 			.then((res) => {
 				console.log(res);
 				if (res.data.statusCode === 200) {

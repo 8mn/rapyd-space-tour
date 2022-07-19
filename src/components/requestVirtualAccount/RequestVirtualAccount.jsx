@@ -4,6 +4,7 @@ import { useState } from "react";
 import { db } from "../../firebase";
 import Style from "./RequestVirtualAccount.module.scss";
 import { v4 as uuidv4 } from "uuid";
+import toast, { Toaster } from "react-hot-toast";
 
 const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 	const data = {
@@ -19,7 +20,10 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 
 	const handleClick = () => {
 		axios
-			.post("http://localhost:5000/request-virtual-account", data)
+			.post(
+				"https://rapyd-starliner-backend.herokuapp.com/request-virtual-account",
+				data
+			)
 			.then((res) => {
 				console.log(res);
 				// setvirtualAccount(res.data.body.data.bank_account);
@@ -32,6 +36,7 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 				addVanToDb(van);
 				// setIssuedBankAccount(res.data.body.data.id);
 			});
+			toast.success("New Account added successfully");
 	};
 
 	const addVanToDb = async (van) => {
@@ -40,6 +45,7 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 
 	return (
 		<>
+		{/* <Toaster /> */}
 			<div className={Style.container}>
 				<h4>Available accounts</h4>
 
