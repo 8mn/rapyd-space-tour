@@ -47,7 +47,7 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 			</div>
 
 			<div className={Style.instructions}>
-				Please Make a payment to any of the following accounts
+				 Make a payment to any of the following accounts
 			</div>
 		</>
 	);

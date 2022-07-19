@@ -157,21 +157,15 @@ function Dashboard() {
 							{}
 						</div>
 						<div className={Style.timeuntilLaunch}>
-							<h1>TIME UNTIL LAUNCH</h1>
+							<h4>TIME UNTIL LAUNCH</h4>
 							<Timer />
 						</div>
 
-						{/* <div className={Style.ticket}>
-							<p>Ticket $150,000</p>
-							<p>Launch details</p>
-							<p>your ticket status</p>
-							<div>Make a deposit($50,000)</div>
-							<div>Pay the rest before launch($100,000)</div>
-						</div> */}
+
 
 						{paymentCompleted ? (
 							<>
-								<h1>TICKET</h1>
+								<h4>YOUR TICKET</h4>
 								<div className={Style.ticket}>
 									<Ticket userName={userDetails.name} />
 								</div>
@@ -222,12 +216,12 @@ function Dashboard() {
 												style={{
 													backgroundColor:
 														van.issuedBankAccountId === issuedBankAccount
-															? "#e2f7ff"
+															? "#DBEAFE"
 															: "",
 
 													border:
 														van.issuedBankAccountId === issuedBankAccount
-															? "2px solid #1a769b"
+															? "2px solid #1E40AF"
 															: "",
 												}}
 											>

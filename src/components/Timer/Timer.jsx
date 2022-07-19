@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Style from "./Timer.module.scss";
 
 const Timer = () => {
 	const calculateTimeLeft = () => {
@@ -43,8 +44,9 @@ const Timer = () => {
 		return () => clearTimeout(timer);
 	});
 	return (
-		<div>
+		<div className={Style.container}>
 			{timerComponents.length ? timerComponents : <span>Time's up!</span>}
+			{/* {console.log(timerComponents)} */}
 		</div>
 	);
 };

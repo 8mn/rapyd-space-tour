@@ -84,13 +84,16 @@ nav {
         }
 
         .depositPaid,.paymentCompleted{
-            background-color: #38f338;
+            background-color: #BBF7D0;
+            border: 2px solid #22C55E;
         }
         .depositNotPaid{
-            background-color: #ff52e2;
+            background-color: #FECACA;
+            border: 2px solid #EF4444;
         }
         .paymentInComplete{
-            background-color: #ff52e2;
+             background-color: #FECACA;
+            border: 2px solid #EF4444;
         }
     }
 }

@@ -26,7 +26,9 @@ const Ticket = ({ userName }) => {
 						</div>
 						<div className={`${Style.info} ${Style.departure}`}>
 							<div className={Style.info__item}>Depart</div>
-							<div className={Style.info__detail}>Kennedy Space Center, Earth</div>
+							<div className={Style.info__detail}>
+								Kennedy Space Center, Earth
+							</div>
 						</div>
 						<div className={`${Style.info} ${Style.arrival}`}>
 							<div className={Style.info__item}>Arrive</div>
@@ -50,19 +52,19 @@ const Ticket = ({ userName }) => {
 						</div>
 						<div className={Style.fineprint}>
 							<p>
-								Boarding begins 30 minutes before departure. Snacks available
-								for purchase from The Honeydukes Express.
+								Boarding begins 8 hours before departure. Snacks available for
+								purchase from The Honeydukes Express.
 							</p>
-							<p>
-								This ticket is Non-refundable • Hogwarts Express Railway
-								Authority
-							</p>
+							<p>This ticket is Non-refundable • raypd starliner pvt ltd</p>
 						</div>
 						<div className={Style.snack}>
-							<svg viewBox="0 -11 414.00053 414">
-								<path d="m202.480469 352.128906c0-21.796875-17.671875-39.46875-39.46875-39.46875-21.800781 0-39.472657 17.667969-39.472657 39.46875 0 21.800782 17.671876 39.472656 39.472657 39.472656 21.785156-.023437 39.445312-17.683593 39.46875-39.472656zm0 0"></path>
-								<path d="m348.445312 348.242188c2.148438 21.691406-13.695312 41.019531-35.390624 43.167968-21.691407 2.148438-41.015626-13.699218-43.164063-35.390625-2.148437-21.691406 13.695313-41.019531 35.386719-43.167969 21.691406-2.148437 41.019531 13.699219 43.167968 35.390626zm0 0"></path>
-								<path d="m412.699219 63.554688c-1.3125-1.84375-3.433594-2.941407-5.699219-2.941407h-311.386719l-3.914062-24.742187c-3.191407-20.703125-21.050781-35.9531252-42-35.871094h-42.699219c-3.867188 0-7 3.132812-7 7s3.132812 7 7 7h42.699219c14.050781-.054688 26.03125 10.175781 28.171875 24.0625l33.800781 213.515625c3.191406 20.703125 21.050781 35.957031 42 35.871094h208.929687c3.863282 0 7-3.132813 7-7 0-3.863281-3.136718-7-7-7h-208.929687c-14.050781.054687-26.03125-10.175781-28.171875-24.0625l-5.746094-36.300781h213.980469c18.117187-.007813 34.242187-11.484376 40.179687-28.597657l39.699219-114.578125c.742188-2.140625.402344-4.511718-.914062-6.355468zm0 0"></path>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
 							</svg>
 						</div>
 						<div className={Style.barcode}>
@@ -72,19 +74,19 @@ const Ticket = ({ userName }) => {
 					</div>
 					<div className={Style.ticket__side}>
 						<div className={Style.logo}>
-							<p>Hogwarts Express</p>
+							<p>starlight spaceship</p>
 						</div>
 						<div className={`${Style.info} ${Style["side-arrive"]}`}>
 							<div className={Style.info__item}>Arrive</div>
-							<div className={Style.info__detail}>Hogsmeade</div>
+							<div className={Style.info__detail}>Mars</div>
 						</div>
 						<div className={`${Style.info} ${Style["side-depart"]}`}>
 							<div className={Style.info__item}>Depart</div>
-							<div className={Style.info__detail}>King's Cross</div>
+							<div className={Style.info__detail}>KSC, Earth</div>
 						</div>
 						<div className={`${Style.info} ${Style["side-date"]}`}>
 							<div className={Style.info__item}>Date</div>
-							<div className={Style.info__detail}>1 Sep 2018</div>
+							<div className={Style.info__detail}>1 Oct 2022</div>
 						</div>
 						<div className={`${Style.info} ${Style["side-time"]}`}>
 							<div className={Style.info__item}>Time</div>
