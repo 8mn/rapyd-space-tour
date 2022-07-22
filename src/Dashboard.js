@@ -2,31 +2,23 @@ import axios from "axios";
 import Style from "./Dashboard.module.scss";
 import { useEffect, useState } from "react";
 import RequestVirtualAccount from "./components/requestVirtualAccount/RequestVirtualAccount";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, logout, db } from "../src/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import cx from "classnames";
 
-import {
-	collection,
-	doc,
-	getDoc,
-	getDocs,
-	onSnapshot,
-	setDoc,
-	updateDoc,
-} from "firebase/firestore";
-import Timer from "./components/Timer/Timer";
+import { collection, doc, onSnapshot } from "firebase/firestore";
 import Ticket from "./components/Ticket/Ticket";
+import Navbar from "./components/Navbar/Navbar";
+import AccountCard from "./components/AccountCard/AccountCard";
+import LaunchTimer from "./LaunchTimer/LaunchTimer";
 
 function Dashboard() {
 	const [walletID, setWalletID] = useState(
 		"ewallet_5d616c29e44b710fcb040c95a94eac72"
 	);
-
-	// const [virtualAccount, setvirtualAccount] = useState("");
 
 	const [virtualAccounts, setVirtualAccounts] = useState([]);
 	const [issuedBankAccount, setIssuedBankAccount] = useState(null);
@@ -60,12 +52,8 @@ function Dashboard() {
 
 	let virtualAccountsArr = [];
 	const fetchvansfromDb = async () => {
-		// console.log("fetching vans from db");
 		onSnapshot(collection(db, "virtual-accounts"), (snapshot) => {
-			// console.log(snapshot);
 			snapshot.forEach((doc) => {
-				// console.log(doc.data());
-				//make an array of all the virtual accounts
 				virtualAccountsArr.push(doc.data());
 			});
 			setVirtualAccounts(virtualAccountsArr);
@@ -75,42 +63,52 @@ function Dashboard() {
 	};
 
 	const getUserDetails = async () => {
-		const userDetails = await getDoc(doc(db, `users/${user.uid}`));
-		console.log(userDetails.data());
-		setUserDetails(userDetails.data());
-		if (!userDetails.data().depositPaid) {
-			setAmountToPay(50000);
-		} else {
-			if (userDetails.data().paymentCompleted) {
-				setAmountToPay(null);
-				setPaymentCompleted(true);
+		onSnapshot(doc(db, "users", user.uid), (doc) => {
+			console.log(doc.data());
+
+			const userdetailsFromDb = doc.data();
+			setUserDetails(userdetailsFromDb);
+
+			if (!userdetailsFromDb.depositPaid) {
+				setAmountToPay(50000);
 			} else {
-				setAmountToPay(100000);
+				if (userdetailsFromDb.paymentCompleted) {
+					setAmountToPay(null);
+					setPaymentCompleted(true);
+				} else {
+					setAmountToPay(100000);
+				}
 			}
-		}
+		});
 	};
 
 	const AmountData = {
 		issued_bank_account: issuedBankAccount,
 		amount: amountToPay,
-		currency: "USD",
+		currency: "SGD",
+		userID: user?.uid,
 	};
+	// "https://rapyd-starliner-backend.herokuapp.com/simulate-payment"
 
 	const simulateDepositPayment = () => {
 		axios
 			.post(
 				"https://rapyd-starliner-backend.herokuapp.com/simulate-payment",
 				AmountData
-			)
+			) 
 			.then((res) => {
-				console.log(res);
-				if (res.data.statusCode === 200) {
+				const transactions = res.data.body.data.transactions;
+				console.log(res.data.body.data.transactions[transactions.length - 1]);
+
+				const currentTransaction =
+					res.data.body.data.transactions[transactions.length - 1];
+
+				if (res.data.body.status.status === "SUCCESS") {
 					toast.success("Payment Successful");
-					if (amountToPay === 50000) {
-						depositPaid();
+
+					if (currentTransaction.amount === 50000) {
 						setAmountToPay(100000);
 					} else {
-						paymentCompletedDb();
 						setPaymentCompleted(true);
 					}
 				} else {
@@ -119,52 +117,31 @@ function Dashboard() {
 			});
 	};
 
-	const depositPaid = async () => {
-		await updateDoc(doc(db, `users/${user.uid}`), {
-			depositPaid: true,
-		});
-		getUserDetails();
-	};
-
-	const paymentCompletedDb = async () => {
-		await updateDoc(doc(db, `users/${user.uid}`), {
-			paymentCompleted: true,
-		});
-	};
-
 	const paymentClass = cx(Style.amount, {
 		[Style.paymentCompleted]: paymentCompleted,
 		[Style.paymentInComplete]: !paymentCompleted,
 	});
 
-
-
 	return (
 		<div className={Style.App}>
-			<Toaster position="top-right" reverseOrder={false} />
+			<Toaster position="top-center" reverseOrder={false} />
 			{user && userDetails && (
 				<>
-					<nav>
-						<div className={Style.container}>
-							<div className={Style.logo}>Rapyd starliner</div>
-							<button onClick={logout}>logout</button>
-						</div>
-					</nav>
+					<Navbar userDetails={userDetails} />
 					<div className={Style.dashboard}>
 						<div className={Style.paymentInstructions}>
 							{!userDetails.depositPaid
 								? "Please make a deposit of $50,000 to continue"
 								: paymentCompleted
-								? "Payment Completed, Please check your email for the ticket"
+								? "Payment Completed, Brace for impact"
 								: " Plase make a payment of $100,000 to reserve your seat"}
 							{}
 						</div>
 						<div className={Style.timeuntilLaunch}>
 							<h4>TIME UNTIL LAUNCH</h4>
-							<Timer />
+							{/* <Timer /> */}
+							<LaunchTimer />
 						</div>
-
-
 
 						{paymentCompleted ? (
 							<>
@@ -207,86 +184,18 @@ function Dashboard() {
 									virtualAccounts={virtualAccounts}
 								/>
 								<div className={Style.availableAccounts}>
-									{/* {console.log(virtualAccount)} */}
 									{virtualAccounts.map((van) => {
 										return (
-											<div
-												className={Style.vanContainer}
-												onClick={() =>
-													setIssuedBankAccount(van.issuedBankAccountId)
-												}
-												key={van.issuedBankAccountId}
-												style={{
-													backgroundColor:
-														van.issuedBankAccountId === issuedBankAccount
-															? "#DBEAFE"
-															: "",
-
-													border:
-														van.issuedBankAccountId === issuedBankAccount
-															? "2px solid #1E40AF"
-															: "",
-												}}
-											>
-												<div className={Style.field}>
-													<div className={Style.label}>Account number</div>
-													<p className={Style.data}>
-														{van.account_number}
-
-														{/* <button
-													onClick={() =>
-														navigator.clipboard.writeText(van.account_number)
-													}
-												>
-												
-												
-													copy
-												</button> */}
-													</p>
-												</div>
-												<div className={Style.field}>
-													<div className={Style.label}>Address</div>
-													<p className={`${Style.data} ${Style.address}`}>
-														{van.address}
-													</p>
-												</div>
-												<div className={Style.field}>
-													<div className={Style.label}>bank</div>
-													<p className={`${Style.data}`}>{van.bank}</p>
-												</div>
-												<div className={Style.field}>
-													<div className={Style.label}>beneficiary name</div>
-													<p className={`${Style.data}`}>
-														{van.beneficiary_name}
-													</p>
-												</div>
-												<div className={Style.field}>
-													<div className={Style.label}>bic</div>
-													<p className={`${Style.data}`}>{van.bic}</p>
-												</div>
-												<div className={Style.field}>
-													<div className={Style.label}>country</div>
-													<p className={`${Style.data}`}>{van.country}</p>
-												</div>
-												<div className={Style.field}>
-													<div className={Style.label}>country iso</div>
-													<p className={`${Style.data}`}>{van.country_iso}</p>
-												</div>
-												<div className={Style.field}>
-													<div className={Style.label}>zip</div>
-													<p className={`${Style.data}`}>{van.zip}</p>
-												</div>
-
-												{/* <hr /> */}
-											</div>
+											<AccountCard
+												van={van}
+												setIssuedBankAccount={setIssuedBankAccount}
+												issuedBankAccount={issuedBankAccount}
+											/>
 										);
 									})}
-									{/* <hr /> */}
 								</div>
 							</>
 						)}
-
-						{/* {issuedBankAccount && ( */}
 
 						{!paymentCompleted ? (
 							<div className={Style.payment}>
@@ -296,7 +205,6 @@ function Dashboard() {
 						) : (
 							""
 						)}
-						{/* // )} */}
 					</div>
 				</>
 			)}

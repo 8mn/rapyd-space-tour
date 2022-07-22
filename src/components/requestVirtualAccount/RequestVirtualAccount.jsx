@@ -1,10 +1,9 @@
 import axios from "axios";
-import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
-import { useState } from "react";
+import { doc,setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import Style from "./RequestVirtualAccount.module.scss";
 import { v4 as uuidv4 } from "uuid";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 	const data = {
@@ -36,11 +35,11 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 				addVanToDb(van);
 				// setIssuedBankAccount(res.data.body.data.id);
 			});
+		};
+		
+		const addVanToDb = async (van) => {
+			await setDoc(doc(db, "virtual-accounts", uuidv4()), van);
 			toast.success("New Account added successfully");
-	};
-
-	const addVanToDb = async (van) => {
-		await setDoc(doc(db, "virtual-accounts", uuidv4()), van);
 	};
 
 	return (

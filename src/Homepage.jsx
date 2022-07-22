@@ -11,7 +11,7 @@ const Homepage = () => {
 				backgroundImage: `url(${bgMain})`,
 			}}
 		>
-			<nav>
+			<div className={Style.navbar}>
 				<h1 className={Style.logo}>Rapyd starliner</h1>
 				<div className={Style["btn-container"]}>
 					<Link to="/signup">
@@ -21,7 +21,7 @@ const Homepage = () => {
 						<button className={Style.login}>Login </button>
 					</Link>
 				</div>
-			</nav>
+			</div>
 
 			<div className={Style.cta}>
 				<div className={Style.header}>

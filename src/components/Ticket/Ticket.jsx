@@ -43,7 +43,7 @@ const Ticket = ({ userName }) => {
 							<div className={Style.info__detail}>11:00AM</div>
 						</div>
 						<div className={`${Style.info} ${Style.carriage}`}>
-							<div className={Style.info__item}>car</div>
+							<div className={Style.info__item}>ship</div>
 							<div className={Style.info__detail}>4</div>
 						</div>
 						<div className={`${Style.info} ${Style.seat}`}>
@@ -52,15 +52,14 @@ const Ticket = ({ userName }) => {
 						</div>
 						<div className={Style.fineprint}>
 							<p>
-								Boarding begins 8 hours before departure. Snacks available for
-								purchase from The Honeydukes Express.
+								Boarding begins 24 hours before departure.Bring your identification documents for verification 
 							</p>
 							<p>This ticket is Non-refundable • raypd starliner pvt ltd</p>
 						</div>
 						<div className={Style.snack}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								class="h-5 w-5"
+								// class="h-5 w-5"
 								viewBox="0 0 20 20"
 								fill="currentColor"
 							>
@@ -74,7 +73,7 @@ const Ticket = ({ userName }) => {
 					</div>
 					<div className={Style.ticket__side}>
 						<div className={Style.logo}>
-							<p>starlight spaceship</p>
+							<p>starliner 123D</p>
 						</div>
 						<div className={`${Style.info} ${Style["side-arrive"]}`}>
 							<div className={Style.info__item}>Arrive</div>

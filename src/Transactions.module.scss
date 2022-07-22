@@ -1,0 +1,23 @@
+.container {
+    max-width: 900px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+
+    .transaction {
+        background-color: #bbf7d0;
+        border: 2px solid #22c55e;
+        padding: 1rem;
+        border-radius: 6px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .amount{
+            font-size: 2rem;
+        }
+    }
+}

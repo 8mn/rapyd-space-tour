@@ -1,8 +1,8 @@
 $gray-light: #faf8f6;
 $brown-light: #dfd4b8;
 $gold: #e7ac5d;
-$red: #c02a28;
-$yellow-light: #f3f1c9;
+$red: #f93957;
+$yellow-light: #fdfacc;
 $border-color: #444;
 
 // body {
@@ -11,24 +11,24 @@ $border-color: #444;
 // }
 
 
-aside.context {
-  text-align: center;
-  color: #333;
-	line-height: 1.7;
-  a {
-    text-decoration: none;
-    color: #333;
-    padding: 3px 0;
-    border-bottom: 1px dashed;
-		&:hover {
-			border-bottom: 1px solid;
-		}
-  }
-  .explanation {
-    max-width: 700px;
-    margin: 4em auto 0;
-  }
-}
+// aside.context {
+//   text-align: center;
+//   color: #333;
+// 	line-height: 1.7;
+//   a {
+//     text-decoration: none;
+//     color: #333;
+//     padding: 3px 0;
+//     border-bottom: 1px dashed;
+// 		&:hover {
+// 			border-bottom: 1px solid;
+// 		}
+//   }
+//   .explanation {
+//     max-width: 700px;
+//     margin: 4em auto 0;
+//   }
+// }
 
 
 
@@ -43,7 +43,7 @@ aside.context {
 	display: grid;
 	grid-template-columns: auto 143px;
 	background: $yellow-light;
-	border-radius: 10px;
+	// border-radius: 10px;
 	border: 2px solid #222;
 	cursor: default;
 	&__main {

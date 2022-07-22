@@ -1,0 +1,33 @@
+.vanContainer {
+    border: 2px solid #e6e6e6;
+    cursor: pointer;
+    width: 100%;
+    // flex: 1;
+    border-radius: 6px;
+    padding: 2rem;
+
+    &:hover {
+        background-color: #e2e2e2;
+    }
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+
+    .label {
+        font-size: 0.7rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .data {
+        font-size: 1rem;
+        display: flex;
+        gap: .2rem;
+        // align-items: center;
+    }
+
+    .address {
+        max-width: 10rem;
+    }
+}

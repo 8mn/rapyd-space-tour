@@ -41,11 +41,6 @@ function SignUp() {
 				<Toaster
 					// position="top-right"
 					reverseOrder={false}
-					toastOptions={{
-						style: {
-							fontSize: "2rem",
-						},
-					}}
 				/>
 				{/* <Link to="/">
 					<div className={Style.home}>Home</div>

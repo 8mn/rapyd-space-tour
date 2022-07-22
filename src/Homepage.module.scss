@@ -17,7 +17,7 @@
     justify-content: flex-end;
     // justify-content: ;
 
-    nav{
+    .navbar{
         background-color: rgba(0, 0, 0, 0.596);
         padding: 1rem;
         position: absolute;
@@ -39,16 +39,16 @@
 
     .cta{
         background-color: rgb(17, 17, 17);
-        padding: 1rem;
+        padding: 3rem;
         margin-bottom: 4rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         // justify-content: c;
 
-        .signup{
-            text-transform: uppercase;
-        }
+        // .signup{
+        //     text-transform: uppercase;
+        // }
 
         .header{
             justify-content: flex-start;
