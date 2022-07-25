@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, logout, db } from "../src/firebase";
 import toast, { Toaster } from "react-hot-toast";
-import cx from "classnames";
+
 
 import { collection, doc, onSnapshot } from "firebase/firestore";
 import Ticket from "./components/Ticket/Ticket";
@@ -16,6 +16,7 @@ import AccountCard from "./components/AccountCard/AccountCard";
 import LaunchTimer from "./components/LaunchTimer/LaunchTimer";
 
 import rapydTicket from "./assets/rapydTicket.png";
+import PaymentStatus from "./components/PaymentStatus/PaymentStatus";
 
 function Dashboard() {
 	const [walletID, setWalletID] = useState(
@@ -29,6 +30,8 @@ function Dashboard() {
 	const [userDetails, setUserDetails] = useState(null);
 
 	const [paymentCompleted, setPaymentCompleted] = useState(false);
+
+	const [paymentLoading, setPaymentLoading] = useState(false);
 
 	const [user, loading, error] = useAuthState(auth);
 	const navigate = useNavigate();
@@ -93,6 +96,7 @@ function Dashboard() {
 	// "https://rapyd-starliner-backend.herokuapp.com/simulate-payment"
 
 	const simulateDepositPayment = () => {
+		setPaymentLoading(true);
 		axios
 			.post(
 				"https://rapyd-starliner-backend.herokuapp.com/simulate-payment",
@@ -107,7 +111,7 @@ function Dashboard() {
 
 				if (res.data.body.status.status === "SUCCESS") {
 					toast.success("Payment Successful");
-
+					setPaymentLoading(false);
 					if (currentTransaction.amount === 50000) {
 						setAmountToPay(100000);
 					} else {
@@ -119,19 +123,7 @@ function Dashboard() {
 			});
 	};
 
-	const paymentClass = cx(Style.amount, {
-		[Style.paymentCompleted]: paymentCompleted,
-		[Style.paymentInComplete]: !paymentCompleted,
-	});
 
-	let depositClass;
-
-	if (userDetails) {
-		depositClass = cx(Style.amount, {
-			[Style.depositPaid]: userDetails.depositPaid,
-			[Style.depositNotPaid]: !userDetails.depositPaid,
-		});
-	}
 
 	const payments = [
 		{ amount: 50000, currency: "SGD", type: "deposit" },
@@ -172,84 +164,11 @@ function Dashboard() {
 							</>
 						) : (
 							<>
-								<div className={Style.paymentStatus}>
-									{payments.map((payment) => (
-										<div
-											key={payment.type}
-											className={
-												payment.type === "deposit" ? depositClass : paymentClass
-											}
-										>
-											<div>
-												<div className={Style.type}>{payment.type}</div>
-												<div className={Style.price}>${payment.amount}</div>
-											</div>
-
-											{!userDetails.depositPaid ? (
-												<div
-													className={Style.alert}
-													// style={{
-													// 	display: userDetails.depositPaid ? "none" : "block",
-													// }}
-												>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														width="28"
-														height="28"
-														viewBox="0 0 24 24"
-														fill="none"
-														stroke="#F23157"
-														strokeWidth="2"
-														strokeLinecap="round"
-														strokeLinejoin="round"
-													>
-														<circle cx="12" cy="12" r="10" />
-														<path d="M12 7v6m0 3.5v.5" />
-													</svg>
-												</div>
-											) : payment.type === "deposit" ? (
-												<div className={Style.alert}>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														width="28"
-														height="28"
-														viewBox="0 0 24 24"
-														fill="none"
-														stroke="var(--green)"
-														strokeWidth="2"
-														strokeLinecap="round"
-														strokeLinejoin="round"
-													>
-														<path d="M8 12.5l3 3 5-6" />
-														<circle cx="12" cy="12" r="10" />
-													</svg>
-												</div>
-											) : (
-												<div
-													className={Style.alert}
-													// style={{
-													// 	display: userDetails.depositPaid ? "none" : "block",
-													// }}
-												>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														width="28"
-														height="28"
-														viewBox="0 0 24 24"
-														fill="none"
-														stroke="#F23157"
-														strokeWidth="2"
-														strokeLinecap="round"
-														strokeLinejoin="round"
-													>
-														<circle cx="12" cy="12" r="10" />
-														<path d="M12 7v6m0 3.5v.5" />
-													</svg>
-												</div>
-											)}
-										</div>
-									))}
-								</div>
+								<PaymentStatus
+									payments={payments}
+									userDetails={userDetails}
+									paymentCompleted={paymentCompleted}
+								/>
 								<RequestVirtualAccount
 									walletID={walletID}
 									virtualAccounts={virtualAccounts}
@@ -268,15 +187,15 @@ function Dashboard() {
 							</>
 						)}
 					</div>
-					{!paymentCompleted ? (
+					{!paymentCompleted && (
 						<div className={Style.paymentContainer}>
 							<div className={Style.payment}>
 								<div className={Style.amount}>${amountToPay}</div>
-								<button onClick={simulateDepositPayment}>PAY</button>
+								<button onClick={simulateDepositPayment}>
+									{amountToPay === 50000 ? "Pay Deposit" : "Complete Payment"}
+								</button>
 							</div>
 						</div>
-					) : (
-						""
 					)}
 				</>
 			)}

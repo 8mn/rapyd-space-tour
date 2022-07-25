@@ -10,7 +10,7 @@
     // z-index: 98162312;
     position: fixed;
     bottom: 0;
-    background-color: var(--green);
+    background-color: var(--black);
     padding: 0.6rem;
     .payment {
         width: 900px;
@@ -21,11 +21,23 @@
         padding-top: 1rem;
 
         button {
-            padding: 0.5rem 3rem;
+            // padding: 0.5rem 3rem;
+            background-color: var(--green);
+            border-radius: 6px;
+            border: none;
+            color: var(--black);
+            cursor: pointer;
+            border: 2px solid var(--green);
+            
+            &:hover {
+                border: 2px solid var(--green);
+                background-color: var(--black);
+                color: var(--green);
+            }
         }
 
         .amount {
-            color: var(--black);
+            color: var(--green);
             font-size: 2rem;
             font-family: "Space Grotesk", sans-serif;
         }
@@ -64,10 +76,28 @@
 
         button {
             cursor: pointer;
+            //  padding: 0.5rem 3rem;
+            background-color: var(--black);
+            border-radius: 3px;
+            border: none;
+            color: var(--green);
+            cursor: pointer;
+            border: 2px solid var(--black);
+            
+            &:hover {
+                border: 2px solid var(--black);
+                background-color: var(--green);
+                color: var(--black);
+            }
+            
 
             a {
                 text-decoration: none;
-                color: var(--black);
+                color: var(--green);
+
+                &:hover {
+                    color: var(--black);
+                }
                 // color: #000;
             }
         }
@@ -84,7 +114,9 @@
         justify-content: space-between;
         align-items: center;
         button {
+            
             cursor: pointer;
+            
         }
     }
 
@@ -101,55 +133,7 @@
         }
     }
 
-    .paymentStatus {
-        display: flex;
-        justify-content: space-between;
-        @media screen and (max-width: 500px) {
-            flex-direction: column;
-            gap: .7rem;
-        }
-
-        .type {
-            text-transform: uppercase;
-            font-family: "Satoshi", sans-serif;
-        }
-
-        .amount {
-            border: 1px solid #e6e6e6;
-            border-radius: 6px;
-            width: 49%;
-            padding: 1rem;
-            background-color: #f4f4f4;
-
-            font-family: "Space Grotesk", sans-serif;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            // background-color: #EF4444;
-            @media screen and (max-width: 500px) {
-                width: 100%;
-            }
-
-            .price {
-                font-size: 2rem;
-                // font-family: monospace;
-                font-weight: 500;
-                font-family: "Space Grotesk", sans-serif;
-            }
-        }
-
-        .depositPaid,
-        .paymentCompleted {
-            background-color: #d6fcf5;
-            border: 2px solid var(--green);
-        }
-        .depositNotPaid,
-        .paymentInComplete {
-            background-color: #fcd6dd;
-            border: 2px solid #f23157;
-        }
-    }
+  
 }
 
 .availableAccounts {

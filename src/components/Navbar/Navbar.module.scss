@@ -63,10 +63,22 @@ nav {
         }
     }
 
-    // button {
-    //     padding: 0.4rem 1rem;
-    //     border: none;
-    // }
+    button {
+        text-transform: uppercase;
+         padding: 0.5rem 3rem;
+            background-color: var(--green);
+            border-radius: 3px;
+            border: none;
+            color: var(--black);
+            cursor: pointer;
+            // border: 2px solid var(--black);
+            transition: background-color 250ms ease-in-out,  color 250ms ease-in-out;
+            &:hover {
+                // border: 2px solid var(--black);
+                background-color: var(--black);
+                color: var(--green);
+            }
+    }
 }
 
 .dropdownWrapper {

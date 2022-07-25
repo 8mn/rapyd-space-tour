@@ -1,0 +1,49 @@
+.paymentStatus {
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+
+    .type {
+        text-transform: uppercase;
+        font-family: "Satoshi", sans-serif;
+    }
+
+    .amount {
+        border: 1px solid #e6e6e6;
+        border-radius: 6px;
+        width: 49%;
+        padding: 1rem;
+        background-color: #f4f4f4;
+
+        font-family: "Space Grotesk", sans-serif;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        // background-color: #EF4444;
+        @media screen and (max-width: 500px) {
+            width: 100%;
+        }
+
+        .price {
+            font-size: 2rem;
+            // font-family: monospace;
+            font-weight: 500;
+            font-family: "Space Grotesk", sans-serif;
+        }
+    }
+
+    .depositPaid,
+    .paymentCompleted {
+        background-color: #d6fcf5;
+        border: 2px solid var(--green);
+    }
+    .depositNotPaid,
+    .paymentInComplete {
+        background-color: #fcd6dd;
+        border: 2px solid #f23157;
+    }
+}
