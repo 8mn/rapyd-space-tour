@@ -215,7 +215,7 @@ function Dashboard() {
 														height="28"
 														viewBox="0 0 24 24"
 														fill="none"
-														stroke="#22c55e"
+														stroke="var(--green)"
 														strokeWidth="2"
 														strokeLinecap="round"
 														strokeLinejoin="round"

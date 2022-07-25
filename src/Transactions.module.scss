@@ -6,6 +6,15 @@
     flex-direction: column;
     gap: 0.7rem;
 
+    @media screen and (max-width: 500px) {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 .4rem;
+    
+        
+    }
+
+
     .transaction {
         background-color: #d6fcf5;
         border: 2px solid var(--green);
@@ -15,6 +24,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+          @media screen and (max-width: 500px) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
 
         .amount{
             font-size: 2rem;

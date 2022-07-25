@@ -4,11 +4,16 @@
     align-items: center;
     margin-bottom: 30px;
 
+
+
     .timer {
         font-size: 4rem;
         display: flex;
         margin-top: 2rem;
-        
+
+        @media screen and (max-width: 500px) {
+            font-size: 2rem;
+        }
 
         .block {
             background-color: var(--black);
@@ -20,11 +25,19 @@
             display: flex;
             flex-direction: column;
             width: 7rem;
-                    font-family: 'Space Grotesk', sans-serif;
+            font-family: "Space Grotesk", sans-serif;
 
-            .heading{
+            @media screen and (max-width: 500px) {
+                width: 20vw;
+            }
+
+            .heading {
                 font-size: 1rem;
-                font-family: 'Satoshi', sans-serif;
+                font-family: "Satoshi", sans-serif;
+
+                @media screen and (max-width: 500px) {
+                    font-size: 0.8rem;
+                }
             }
             // &::after {
             //     position: absolute;
@@ -38,7 +51,6 @@
             //     background-color: var(--light-gray-dark-background);
             //     opacity: 0.4;
             // }
-            
         }
     }
 }

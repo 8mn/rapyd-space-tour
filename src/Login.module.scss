@@ -22,12 +22,11 @@
     //     font-family: "Pacifico", cursive;
     // }
     background-color: #f0f2f5;
-    a{
+    // background-color: var(--silver);
+
+    a {
         color: var(--ac-1);
     }
-
-
-  
 }
 
 .logo {
@@ -53,16 +52,16 @@
     // border-radius: 8px;
     position: relative;
     background-color: #fff;
-
+    
 
     @media screen and (max-width: 500px) {
         width: 95vw;
     }
-    .submitBtn{
-        background-color: #1E40AF;
+    .submitBtn {
+        background-color: var(--green);
         border: none;
         // border-radius: 22px;
-        color: rgb(255, 255, 255);
+        // color: rgb(255, 255, 255);
         margin-top: 1rem;
         padding: 1rem;
         cursor: pointer;
@@ -91,11 +90,12 @@
         display: flex;
         flex-direction: column;
         margin-top: 1rem;
-        label{
+        label {
             font-size: 1rem;
             // color: var(--ac-1);
-            // text-transform: uppercase;
+            text-transform: uppercase;
             margin-bottom: 0.3rem;
+            //  font-family: 'Space Grotesk', sans-serif;
         }
         input {
             padding: 1rem;
@@ -105,7 +105,7 @@
     }
 
     .checkbox {
-        margin: .7rem 0;
+        margin: 0.7rem 0;
     }
 
     .divider {

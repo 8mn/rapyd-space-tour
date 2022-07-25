@@ -11,7 +11,7 @@
     position: fixed;
     bottom: 0;
     background-color: var(--green);
-    padding: .6rem;
+    padding: 0.6rem;
     .payment {
         width: 900px;
         // border-top: 2px solid #e6e6e6;
@@ -19,18 +19,15 @@
         justify-content: space-between;
         align-items: center;
         padding-top: 1rem;
-        
-        button{
-            padding: .5rem 3rem;
+
+        button {
+            padding: 0.5rem 3rem;
         }
-        
+
         .amount {
             color: var(--black);
             font-size: 2rem;
             font-family: "Space Grotesk", sans-serif;
-            
-
-            
         }
 
         // margin: auto;
@@ -44,6 +41,14 @@
     flex-direction: column;
     gap: 1rem;
 
+    @media screen and (max-width: 500px) {
+        padding: 1rem;
+    }
+
+    @media screen and (min-width:500px) and (max-width: 1100px) {
+        padding: 1rem;
+        
+    }
 
 
     .paymentInstructions {
@@ -52,15 +57,15 @@
         border-radius: 6px;
     }
 
-    .ticketNav{
+    .ticketNav {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        button{
+        button {
             cursor: pointer;
-            
-            a{
+
+            a {
                 text-decoration: none;
                 color: var(--black);
                 // color: #000;
@@ -69,19 +74,16 @@
     }
 
     .ticket {
-        border: 1px dashed rgba($color: #1a2b3b, $alpha: .5);
+        border: 1px dashed rgba($color: #1a2b3b, $alpha: 0.5);
         // background-color: var(--green);
         // padding: 1rem;
-        
     }
 
-
-
-    .LaunchTimerNav{
+    .LaunchTimerNav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        button{
+        button {
             cursor: pointer;
         }
     }
@@ -91,7 +93,7 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        background-color: #adfaeb; 
+        background-color: #adfaeb;
         margin-top: 1rem;
 
         h4 {
@@ -102,8 +104,12 @@
     .paymentStatus {
         display: flex;
         justify-content: space-between;
+        @media screen and (max-width: 500px) {
+            flex-direction: column;
+            gap: .7rem;
+        }
 
-        .type{
+        .type {
             text-transform: uppercase;
             font-family: "Satoshi", sans-serif;
         }
@@ -121,6 +127,9 @@
             align-items: center;
 
             // background-color: #EF4444;
+            @media screen and (max-width: 500px) {
+                width: 100%;
+            }
 
             .price {
                 font-size: 2rem;
@@ -132,14 +141,14 @@
 
         .depositPaid,
         .paymentCompleted {
-            background-color: #bbf7d0;
-            border: 2px solid #22c55e;
+            background-color: #d6fcf5;
+            border: 2px solid var(--green);
         }
-        .depositNotPaid , .paymentInComplete{
+        .depositNotPaid,
+        .paymentInComplete {
             background-color: #fcd6dd;
-            border: 2px solid #F23157;
+            border: 2px solid #f23157;
         }
-        
     }
 }
 
