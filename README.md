@@ -1,73 +1,83 @@
-https://codepen.io/oliviale/pen/MZZYyO
+
+# Rapyd Starliner
+Payments Application For the Galaxy’s Next Big Space Tourism Company, Rapyd starliner
+
+# Live demo
+[Demo](https://rapyd-starliner.vercel.app/)
+
+# Screenshots
+
+![pretty_snap_2022_6_25_21_26-5](https://user-images.githubusercontent.com/64839201/180822338-6d898b8c-9f77-44c8-ae0b-bf5f03200f38.png)
+
+![pretty_snap_2022_6_25_21_40](https://user-images.githubusercontent.com/64839201/180824907-f6e9c100-eb44-429a-bc2f-35d3bb75ef08.png)
+
+# Getting started
+For starting the app in your machine, open the terminal and follow these commands:
+
+git clone the repo
+```
+git clone https://github.com/8mn/rapyd-space-tour.git
+```
+
+cd into working directory
+```
+cd rapyd-space-tour
+```
+
+Install dependencies
+```
+npm install
+```
+
+Run the app on your machine
+```
+npm run start
+```
+open http://localhost:3000 in browser to access the app
 
 
-# Getting Started with Create React App
+# Goals :
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Website for an innovative space exploration venture selling tickets for a flight to the stars. The price is $150,000 per seat.
 
-## Available Scripts
+The Customer is based in Singapore and the company is based in the US. The high price tag makes accepting credit cards and wire transfers expensive for the business and a hassle for the customer.
 
-In the project directory, you can run:
 
-### `npm start`
+To solve this, used Rapyd’s virtual accounts API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Approach:
 
-### `npm test`
+-
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+# Functionalities:
+- Request Virtual Accounts for payments
+- See all transactions
+- Get a ticket when you complete the payment!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Outcomes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- react web app to tweak and find music.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# What's next for Rapyd starliner
+- Use multile currencies other than SGD
+- Refund payment options
 
-### `npm run eject`
+# Links
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [Demo](https://rapyd-starliner.vercel.app/)
+- [Backend Relay](https://github.com/8mn/rapyd-backend-relay)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Credits
+- Ticket design [oliviale on codepen](https://codepen.io/oliviale/pen/MZZYyO) 
+- Font satoshi by [Fontshare](https://www.fontshare.com/)
+- Space Grotesk by [Google Fonts](https://fonts.google.com/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Contact
 
-## Learn More
+If you have any questions/suggestion, Contact me 
+- My Email: `hey@mnsh.me`
+- Twitter: [@oimanish](https://twitter.com/oimanish)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
