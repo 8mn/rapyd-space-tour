@@ -5,9 +5,9 @@
     // flex: 1;
     border-radius: 6px;
     padding: 2rem;
-
+    transition: background-color .2s ease-in-out;
     &:hover {
-        background-color: #e2e2e2;
+        background-color: #eee;
     }
 
     display: grid;
@@ -23,11 +23,15 @@
     .data {
         font-size: 1rem;
         display: flex;
-        gap: .2rem;
+        gap: 0.2rem;
         // align-items: center;
     }
 
     .address {
         max-width: 10rem;
+    }
+
+    .accountNumber {
+        font-family: "Space Grotesk", sans-serif;
     }
 }

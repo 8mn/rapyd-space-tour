@@ -39,9 +39,9 @@ const Navbar = ({ userDetails }) => {
 					<div
 						className={Style.dashboard}
 						style={{
-							textDecoration:
-								location.pathname === "/dashboard" ? "underline" : "none",
-							color: "#000",
+							backgroundColor:
+								location.pathname === "/dashboard" ? "#31f2cc" : "none",
+							borderRadius: "3px",
 						}}
 					>
 						<Link to="/dashboard">
@@ -50,9 +50,9 @@ const Navbar = ({ userDetails }) => {
 					</div>
 					<div
 						style={{
-							textDecoration:
-								location.pathname === "/transactions" ? "underline" : "none",
-							color: "#000",
+							backgroundColor:
+								location.pathname === "/transactions" ? "#31f2cc" : "none",
+							borderRadius: "3px",
 						}}
 					>
 						<Link to="/transactions">
@@ -63,7 +63,7 @@ const Navbar = ({ userDetails }) => {
 						<div ref={dropDownRef}>
 							<img
 								className={Style.profile}
-								src={`https://source.boringavatars.com/beam/120/${userDetails?.name}?colors=000000,ED0B65,B2A700,FCAE11,770493`}
+								src={`https://source.boringavatars.com/beam/120/${userDetails?.name}?colors=31f2cc,1a2b3b,F23157`}
 								alt="User avatar"
 								onClick={() => setDropdownActive(!dropdownActive)}
 							></img>

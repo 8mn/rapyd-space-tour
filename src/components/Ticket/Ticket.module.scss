@@ -1,8 +1,8 @@
 $gray-light: #faf8f6;
-$brown-light: #dfd4b8;
-$gold: #e7ac5d;
-$red: #f93957;
-$yellow-light: #fdfacc;
+$brown-light: #31f2cc;
+$gold: #adfaeb;
+$red: #F23157;
+$yellow-light: #f5f7f9;
 $border-color: #444;
 
 // body {
@@ -37,6 +37,7 @@ $border-color: #444;
 	margin: 3rem auto;
 	width: 740px;
 	text-transform: uppercase;
+	    font-family: 'Space Grotesk', sans-serif;
 }
 
 .ticket {
@@ -44,7 +45,7 @@ $border-color: #444;
 	grid-template-columns: auto 143px;
 	background: $yellow-light;
 	// border-radius: 10px;
-	border: 2px solid #222;
+	border: 2px solid var(--black);
 	cursor: default;
 	&__main {
 		display: grid;
@@ -61,7 +62,7 @@ $border-color: #444;
 	font: 900 38px 'Space Grotesk', sans-serif;
 	padding: 5px 0 5px 20px;
 	letter-spacing: 6px;
-	background: #111;
+	background: var(--black);
 	color: $yellow-light;
 }
 
@@ -74,7 +75,7 @@ $border-color: #444;
 		letter-spacing: 0.5px;
 	}
 	&__detail {
-		font: 700 20px/1 'Space Grotesk';
+		font: 700 20px/1 'satoshi';
 		letter-spacing: 1px;
 		margin: 4px 0;
 	}
@@ -164,7 +165,7 @@ $border-color: #444;
 	width: 65px;
 	margin: 10px 10px 0 0;
 	position: relative;
-	background: #000;
+	background: var(--black);
 	padding: 6px 0 2px;
 	text-align: center;
 	border-radius: 5px;

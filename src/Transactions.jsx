@@ -11,13 +11,13 @@ import Navbar from "./components/Navbar/Navbar";
 
 const Transactions = () => {
 	const [user, loading, error] = useAuthState(auth);
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const [userDetails, setUserDetails] = useState(null);
 
 	useEffect(() => {
 		if (loading) return;
 		if (!user) {
-			navigate("/")
+			navigate("/");
 		} else {
 			getUserDetails();
 		}
@@ -25,7 +25,7 @@ const Transactions = () => {
 
 	const getUserDetails = async () => {
 		const userDetails = await getDoc(doc(db, `users/${user.uid}`));
-		console.log(userDetails.data());
+		// console.log(userDetails.data());
 		setUserDetails(userDetails.data());
 	};
 
@@ -62,14 +62,17 @@ const Transactions = () => {
 				<div>
 					<Navbar userDetails={userDetails} />
 					<div className={Style.container}>
-						{console.log(userDetails)}
+						{/* {console.log(userDetails)} */}
 						{userDetails.transactions.map((t) => (
 							<div key={t.id} className={Style.transaction}>
 								<div>
 									<div className={Style.amount}>
 										{t.data.currency} {t.data.amount.toLocaleString()}
 									</div>
-									{t.data.issuing_transaction_id}
+									<div className="idContainer">
+										<div className="label">
+										{t.data.issuing_transaction_id}</div>
+									</div>
 								</div>
 								<div className={Style.created}>
 									{timeConverter(t.created_at)}
@@ -81,9 +84,9 @@ const Transactions = () => {
 			) : (
 				<>
 					<Navbar userDetails={userDetails} />
-				<div className={Style.container}>
-					<h2>No transactions to show</h2>
-				</div>
+					<div className={Style.container}>
+						<h2>No transactions to show</h2>
+					</div>
 				</>
 			)}
 		</>

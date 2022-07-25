@@ -5,20 +5,39 @@
 }
 * {
 	margin: 0;
-    padding: 0;
+	padding: 0;
 }
 html,
 body {
 	height: 100%;
-    /* if you want 1rem = 10px, easier for calculations */
-    /* font-size: 62.5%; */ 
-	font-family: 'Space Grotesk', sans-serif;
+	/* if you want 1rem = 10px, easier for calculations */
+	/* font-size: 62.5%; */
+
+	font-family: "Satoshi", sans-serif;
+	color: #1a2b3b;
+
+	--black: #1a2b3b;
+	--dark-gray: #667380;
+	--gray: #667380;
+	--light-gray-light-background: #808b96;
+	--light-gray-dark-background: #9da8b2;
+	--green: #31f2cc;
+	--lime: #df3;
+	--blue: #3bf;
+	--orange: #fa6d3e;
+	--silver: #f5f7f9;
+	--white: #fff;
+}
+
+
+::selection {
+
+    background: var(--green);
+
 }
 body {
 	/* line-height: 1.5; */
 	-webkit-font-smoothing: antialiased;
-
-	
 }
 img,
 picture,
@@ -49,6 +68,6 @@ h6 {
 	isolation: isolate;
 }
 
-button{
-	padding: .6rem 1rem;
+button {
+	padding: 0.6rem 1rem;
 }

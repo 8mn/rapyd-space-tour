@@ -13,7 +13,9 @@ import { collection, doc, onSnapshot } from "firebase/firestore";
 import Ticket from "./components/Ticket/Ticket";
 import Navbar from "./components/Navbar/Navbar";
 import AccountCard from "./components/AccountCard/AccountCard";
-import LaunchTimer from "./LaunchTimer/LaunchTimer";
+import LaunchTimer from "./components/LaunchTimer/LaunchTimer";
+
+import rapydTicket from "./assets/rapydTicket.png";
 
 function Dashboard() {
 	const [walletID, setWalletID] = useState(
@@ -95,7 +97,7 @@ function Dashboard() {
 			.post(
 				"https://rapyd-starliner-backend.herokuapp.com/simulate-payment",
 				AmountData
-			) 
+			)
 			.then((res) => {
 				const transactions = res.data.body.data.transactions;
 				console.log(res.data.body.data.transactions[transactions.length - 1]);
@@ -122,6 +124,20 @@ function Dashboard() {
 		[Style.paymentInComplete]: !paymentCompleted,
 	});
 
+	let depositClass;
+
+	if (userDetails) {
+		depositClass = cx(Style.amount, {
+			[Style.depositPaid]: userDetails.depositPaid,
+			[Style.depositNotPaid]: !userDetails.depositPaid,
+		});
+	}
+
+	const payments = [
+		{ amount: 50000, currency: "SGD", type: "deposit" },
+		{ amount: 100000, currency: "SGD", type: "remaining" },
+	];
+
 	return (
 		<div className={Style.App}>
 			<Toaster position="top-center" reverseOrder={false} />
@@ -129,23 +145,27 @@ function Dashboard() {
 				<>
 					<Navbar userDetails={userDetails} />
 					<div className={Style.dashboard}>
-						<div className={Style.paymentInstructions}>
-							{!userDetails.depositPaid
-								? "Please make a deposit of $50,000 to continue"
-								: paymentCompleted
-								? "Payment Completed, Brace for impact"
-								: " Plase make a payment of $100,000 to reserve your seat"}
-							{}
-						</div>
-						<div className={Style.timeuntilLaunch}>
-							<h4>TIME UNTIL LAUNCH</h4>
-							{/* <Timer /> */}
-							<LaunchTimer />
+						<div className={Style.LaunchTimerContainer}>
+							<div className={Style.LaunchTimerNav}>
+								<h4>TIME UNTIL LAUNCH</h4>
+								{/* <button>Launch schedule</button> */}
+							</div>
+							<div className={Style.timeuntilLaunch}>
+								{/* <Timer /> */}
+								<LaunchTimer />
+							</div>
 						</div>
 
 						{paymentCompleted ? (
 							<>
-								<h4>YOUR TICKET</h4>
+								<div className={Style.ticketNav}>
+									<h4>YOUR TICKET</h4>
+									<button>
+										<a href={rapydTicket} download>
+											Download
+										</a>
+									</button>
+								</div>
 								<div className={Style.ticket}>
 									<Ticket userName={userDetails.name} />
 								</div>
@@ -153,31 +173,82 @@ function Dashboard() {
 						) : (
 							<>
 								<div className={Style.paymentStatus}>
-									<div
-										className={cx(Style.amount, {
-											[Style.depositPaid]: userDetails.depositPaid,
-											[Style.depositNotPaid]: !userDetails.depositPaid,
-										})}
-										// style={{
-										// 	backgroundColor:
-										// 		amountToPay === 50000 ? "#fdadad" : "#ffffff",
-										// }}
-									>
-										<div className={Style.type}>DEPOSIT</div>
-										<div className={Style.price}>$50,000</div>
-										{/* <div>Make the deposit</div> */}
-									</div>
-									<div
-										className={paymentClass}
-										// style={{
-										// 	backgroundColor:
-										// 		amountToPay === 100000 ? "#fdadad" : "#ffffff",
-										// }}
-									>
-										<div className={Style.type}>REMAINING</div>
-										<div className={Style.price}>$100,000</div>
-										{/* <div>Pay the remaining amount</div> */}
-									</div>
+									{payments.map((payment) => (
+										<div
+											key={payment.type}
+											className={
+												payment.type === "deposit" ? depositClass : paymentClass
+											}
+										>
+											<div>
+												<div className={Style.type}>{payment.type}</div>
+												<div className={Style.price}>${payment.amount}</div>
+											</div>
+
+											{!userDetails.depositPaid ? (
+												<div
+													className={Style.alert}
+													// style={{
+													// 	display: userDetails.depositPaid ? "none" : "block",
+													// }}
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="28"
+														height="28"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="#F23157"
+														strokeWidth="2"
+														strokeLinecap="round"
+														strokeLinejoin="round"
+													>
+														<circle cx="12" cy="12" r="10" />
+														<path d="M12 7v6m0 3.5v.5" />
+													</svg>
+												</div>
+											) : payment.type === "deposit" ? (
+												<div className={Style.alert}>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="28"
+														height="28"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="#22c55e"
+														strokeWidth="2"
+														strokeLinecap="round"
+														strokeLinejoin="round"
+													>
+														<path d="M8 12.5l3 3 5-6" />
+														<circle cx="12" cy="12" r="10" />
+													</svg>
+												</div>
+											) : (
+												<div
+													className={Style.alert}
+													// style={{
+													// 	display: userDetails.depositPaid ? "none" : "block",
+													// }}
+												>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="28"
+														height="28"
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="#F23157"
+														strokeWidth="2"
+														strokeLinecap="round"
+														strokeLinejoin="round"
+													>
+														<circle cx="12" cy="12" r="10" />
+														<path d="M12 7v6m0 3.5v.5" />
+													</svg>
+												</div>
+											)}
+										</div>
+									))}
 								</div>
 								<RequestVirtualAccount
 									walletID={walletID}
@@ -196,16 +267,17 @@ function Dashboard() {
 								</div>
 							</>
 						)}
-
-						{!paymentCompleted ? (
+					</div>
+					{!paymentCompleted ? (
+						<div className={Style.paymentContainer}>
 							<div className={Style.payment}>
-								<div>${amountToPay}</div>
+								<div className={Style.amount}>${amountToPay}</div>
 								<button onClick={simulateDepositPayment}>PAY</button>
 							</div>
-						) : (
-							""
-						)}
-					</div>
+						</div>
+					) : (
+						""
+					)}
 				</>
 			)}
 		</div>

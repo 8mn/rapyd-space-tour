@@ -1,3 +1,41 @@
+.App {
+    position: relative;
+    padding-bottom: 7rem;
+}
+
+.paymentContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // z-index: 98162312;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--green);
+    padding: .6rem;
+    .payment {
+        width: 900px;
+        // border-top: 2px solid #e6e6e6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        
+        button{
+            padding: .5rem 3rem;
+        }
+        
+        .amount {
+            color: var(--black);
+            font-size: 2rem;
+            font-family: "Space Grotesk", sans-serif;
+            
+
+            
+        }
+
+        // margin: auto;
+    }
+}
 
 .dashboard {
     max-width: 900px;
@@ -6,26 +44,46 @@
     flex-direction: column;
     gap: 1rem;
 
-    .ticket {
-        // width: 10rem;
-        // height: 30rem;
-    }
+
 
     .paymentInstructions {
         border: 2px solid rgb(243, 243, 243);
         padding: 1rem;
+        border-radius: 6px;
+    }
+
+    .ticketNav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button{
+            cursor: pointer;
+            
+            a{
+                text-decoration: none;
+                color: var(--black);
+                // color: #000;
+            }
+        }
     }
 
     .ticket {
-        border: 1px dashed #ccc;
+        border: 1px dashed rgba($color: #1a2b3b, $alpha: .5);
+        // background-color: var(--green);
         // padding: 1rem;
+        
     }
 
-    .payment {
-        border-top: 2px solid #e6e6e6;
+
+
+    .LaunchTimerNav{
         display: flex;
         justify-content: space-between;
-        padding-top: 1rem;
+        align-items: center;
+        button{
+            cursor: pointer;
+        }
     }
 
     .timeuntilLaunch {
@@ -33,8 +91,10 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        background-color: #adfaeb; 
+        margin-top: 1rem;
 
-        h4{
+        h4 {
             align-self: flex-start;
         }
     }
@@ -43,18 +103,30 @@
         display: flex;
         justify-content: space-between;
 
+        .type{
+            text-transform: uppercase;
+            font-family: "Satoshi", sans-serif;
+        }
+
         .amount {
             border: 1px solid #e6e6e6;
             border-radius: 6px;
             width: 49%;
             padding: 1rem;
             background-color: #f4f4f4;
+
+            font-family: "Space Grotesk", sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
             // background-color: #EF4444;
 
             .price {
                 font-size: 2rem;
                 // font-family: monospace;
                 font-weight: 500;
+                font-family: "Space Grotesk", sans-serif;
             }
         }
 
@@ -63,14 +135,11 @@
             background-color: #bbf7d0;
             border: 2px solid #22c55e;
         }
-        .depositNotPaid {
-            background-color: #fecaca;
-            border: 2px solid #ef4444;
+        .depositNotPaid , .paymentInComplete{
+            background-color: #fcd6dd;
+            border: 2px solid #F23157;
         }
-        .paymentInComplete {
-            background-color: #fecaca;
-            border: 2px solid #ef4444;
-        }
+        
     }
 }
 
@@ -81,6 +150,3 @@
     flex-wrap: wrap;
     // background-color: aquamarine;
 }
-
-
-

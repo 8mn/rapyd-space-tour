@@ -9,22 +9,22 @@ const AccountCard = ({ van, setIssuedBankAccount, issuedBankAccount }) => {
 			key={van.issuedBankAccountId}
 			style={{
 				backgroundColor:
-					van.issuedBankAccountId === issuedBankAccount ? "#DBEAFE" : "",
+					van.issuedBankAccountId === issuedBankAccount ? "#d6fcf5" : "",
 
 				border:
 					van.issuedBankAccountId === issuedBankAccount
-						? "2px solid #1E40AF"
+						? "2px solid var(--green)"
 						: "",
 			}}
 		>
 			<div className={Style.field}>
 				<div className={Style.label}>Account number</div>
 				<p
-					className={Style.data}
+					className={`${Style.data} ${Style.accountNumber}`}
 					onClick={() => {
 						navigator.clipboard.writeText(van.account_number);
-                        toast.success("Copied to clipboard");
-                    }}
+						toast.success("Copied to clipboard");
+					}}
 				>
 					<div>{van.account_number}</div>
 					<svg

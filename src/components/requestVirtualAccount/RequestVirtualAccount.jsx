@@ -51,9 +51,9 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 				<button onClick={handleClick}>Request VAN</button>
 			</div>
 
-			<div className={Style.instructions}>
+			{/* <div className={Style.instructions}>
 				 Make a payment to any of the following accounts
-			</div>
+			</div> */}
 		</>
 	);
 };

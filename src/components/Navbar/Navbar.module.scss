@@ -5,18 +5,18 @@ nav {
 
 
     a{
-        color: #000;
+        color: var(--black);
         text-decoration: none;
         // font-weight: 500;
-        padding: .4rem .2rem;
+        padding: .4rem 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 6px;
+        border-radius: 3px;
         border: 6px;
-        transition: background-color 350ms ease;
+        transition: background-color 250ms ease-in-out;
         &:hover{
-            background-color: #e6e6e6;
+            background-color: #31f2cc;
         }
     }
 
@@ -25,7 +25,7 @@ nav {
         display: flex;
         align-items: center;
 
-        gap: 1.4rem;
+        gap: .7rem;
     }
     .container {
         max-width: 900px;
@@ -39,6 +39,8 @@ nav {
 
     .logo {
         text-transform: uppercase;
+        //  font-family: 'Space Grotesk', sans-serif;
+        font-weight: 500;
     }
 
     // button {

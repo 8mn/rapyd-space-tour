@@ -32,7 +32,7 @@ const Ticket = ({ userName }) => {
 						</div>
 						<div className={`${Style.info} ${Style.arrival}`}>
 							<div className={Style.info__item}>Arrive</div>
-							<div className={Style.info__detail}>mars</div>
+							<div className={Style.info__detail}>Jezero Crater,mars</div>
 						</div>
 						<div className={`${Style.info} ${Style.date}`}>
 							<div className={Style.info__item}>Date</div>
@@ -52,7 +52,8 @@ const Ticket = ({ userName }) => {
 						</div>
 						<div className={Style.fineprint}>
 							<p>
-								Boarding begins 24 hours before departure.Bring your identification documents for verification 
+								Boarding begins 24 hours before departure.Bring your
+								identification documents for verification
 							</p>
 							<p>This ticket is Non-refundable • raypd starliner pvt ltd</p>
 						</div>
