@@ -36,10 +36,17 @@
         gap: 1rem;
 
         button {
-            background-color: var(--black);
+            background-color: transparent;
+            border: 2px solid #fff;
             color: #fff;
-            border: none;
+            // border: none;
             border-radius: 6px;
+            cursor: pointer;
+
+            &:hover{
+                background-color: #fff;
+                color: #000;
+            }
         }
     }
 }
@@ -165,14 +172,14 @@
                 border: none;
                 color: var(--black);
                 cursor: pointer;
-                font-weight: bold;
+                font-weight: 500;
                 // border: 2px solid var(--green);
 
                 //  background: linear-gradient(10grad,var(--lime),var(--green));
-
+                padding: 1rem;
                 &:hover {
                     border: 2px solid none;
-                    background: var(--black);
+                    background: #000;
                     color: var(--green);
                 }
             }

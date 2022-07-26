@@ -29,7 +29,7 @@ const Homepage = () => {
 							<div className={Style.desc}>
 								Join 1 Million other humans on a mission to occupy Mars. Reserve
 								your seat at $150,000. Now accepting payments in Singapore
-								dollars.
+								dollars. 
 							</div>
 						</div>
 
