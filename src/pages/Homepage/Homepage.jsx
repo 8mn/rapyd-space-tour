@@ -27,11 +27,9 @@ const Homepage = () => {
 						<div className={Style.header}>
 							<h1 className={Style.heading}>Ready for mars and beyond?</h1>
 							<div className={Style.desc}>
-								Join 1 Million other humans to occupy mars. Reserve your seat at
-								$150,000. Lorem ipsum dolor sit amet consectetur adipisicing
-								elit. Est ipsum itaque quam recusandae. Velit numquam laborum
-								doloribus saepe temporibus quam maxime ullam dolore? Repellendus
-								cumque asperiores explicabo laboriosam architecto id.
+								Join 1 Million other humans on a mission to occupy Mars. Reserve
+								your seat at $150,000. Now accepting payments in Singapore
+								dollars.
 							</div>
 						</div>
 
@@ -40,7 +38,6 @@ const Homepage = () => {
 								<button className={Style.signup}>Reserve your seat </button>
 							</Link>
 						</div>
-					
 					</div>
 				</div>
 			</div>

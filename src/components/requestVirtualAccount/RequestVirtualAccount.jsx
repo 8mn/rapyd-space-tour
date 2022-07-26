@@ -4,8 +4,14 @@ import { db } from "../../firebase";
 import Style from "./RequestVirtualAccount.module.scss";
 import { v4 as uuidv4 } from "uuid";
 import toast from "react-hot-toast";
+import { useState } from "react";
+
+
 
 const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
+
+
+	const [vanLoading, setvanLoading] = useState(false);
 	const data = {
 		currency: "SGD",
 		country: "SG",
@@ -18,6 +24,7 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 	};
 
 	const handleClick = () => {
+		setvanLoading(true);
 		axios
 			.post(
 				"https://rapyd-starliner-relay.herokuapp.com/request-virtual-account",
@@ -33,6 +40,7 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 				};
 
 				addVanToDb(van);
+				setvanLoading(false);
 				// setIssuedBankAccount(res.data.body.data.id);
 			});
 		};
@@ -48,7 +56,9 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 			<div className={Style.container}>
 				<h4>Available accounts</h4>
 
-				<button onClick={handleClick}>Request VAN</button>
+				<button onClick={handleClick}>{
+					vanLoading ? "Processing.." : "Request new account"
+				}</button>
 			</div>
 
 			{/* <div className={Style.instructions}>

@@ -33,6 +33,7 @@ function Dashboard() {
 	const [paymentCompleted, setPaymentCompleted] = useState(false);
 
 	const [paymentLoading, setPaymentLoading] = useState(false);
+	
 
 	const [user, loading, error] = useAuthState(auth);
 	const navigate = useNavigate();
