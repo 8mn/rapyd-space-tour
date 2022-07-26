@@ -147,6 +147,11 @@ function Dashboard() {
 								<LaunchTimer />
 							</div>
 						</div>
+						<PaymentStatus
+							payments={payments}
+							userDetails={userDetails}
+							paymentCompleted={paymentCompleted}
+						/>
 
 						{paymentCompleted ? (
 							<>
@@ -164,11 +169,6 @@ function Dashboard() {
 							</>
 						) : (
 							<>
-								<PaymentStatus
-									payments={payments}
-									userDetails={userDetails}
-									paymentCompleted={paymentCompleted}
-								/>
 								<RequestVirtualAccount
 									walletID={walletID}
 									virtualAccounts={virtualAccounts}
