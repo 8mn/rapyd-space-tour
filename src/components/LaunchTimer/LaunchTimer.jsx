@@ -10,7 +10,7 @@ function MyTimer({ expiryTimestamp }) {
 	return (
 		<div style={{ textAlign: "center" }} className={Style.container}>
 			<div className={Style.timer}>
-				<div className={Style.block}>
+				<div className={Style.block} >
 					<span className={Style.heading}>DAYS</span>
 					<span>
 						{days < 10 ? "0" : ""}
