@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import Style from "./Transactions.module.scss";
 import { getDoc, doc } from "firebase/firestore";
 
-import { db } from "./firebase";
+
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { auth, logout } from "../src/firebase";
+import { auth, logout, db } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 
 const Transactions = () => {
 	const [user, loading, error] = useAuthState(auth);

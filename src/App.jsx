@@ -1,9 +1,9 @@
-import Dashboard from "./Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./Homepage";
-import Login from "./Login";
-import SignUp from "./SignUp";
-import Transactions from "./Transactions";
+import Homepage from "./pages/Homepage/Homepage";
+import Login from "./pages/Auth/Login";
+import SignUp from "./pages/Auth/SignUp";
+import Transactions from "./pages/Transactions/Transactions";
 
 function App() {
 	return (
@@ -18,6 +18,5 @@ function App() {
 		</BrowserRouter>
 	);
 }
-
 
 export default App;

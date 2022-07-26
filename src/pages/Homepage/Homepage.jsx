@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Style from "./Homepage.module.scss";
 
-import LaunchTimer from "./components/LaunchTimer/LaunchTimer";
+
 
 const Homepage = () => {
 	return (
@@ -40,10 +40,7 @@ const Homepage = () => {
 								<button className={Style.signup}>Reserve your seat </button>
 							</Link>
 						</div>
-						{/* <div className={Style.Timer}>
-							<h4>Time until launch</h4>
-							<LaunchTimer />
-						</div> */}
+					
 					</div>
 				</div>
 			</div>

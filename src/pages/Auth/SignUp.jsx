@@ -1,10 +1,10 @@
-import Style from "./Login.module.scss";
+import Style from "./Auth.module.scss";
 import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, registerWithEmailAndPassword } from "./firebase";
+import { auth, registerWithEmailAndPassword } from "../../firebase";
 
-import GoogleLogin from "./components/GoogleLogin/GoogleLogin";
+import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
 import toast, { Toaster } from "react-hot-toast";
 
 function SignUp() {

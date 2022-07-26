@@ -20,7 +20,7 @@ const RequestVirtualAccount = ({ walletID, virtualAccounts }) => {
 	const handleClick = () => {
 		axios
 			.post(
-				"https://rapyd-starliner-backend.herokuapp.com/request-virtual-account",
+				"https://rapyd-starliner-relay.herokuapp.com/request-virtual-account",
 				data
 			)
 			.then((res) => {

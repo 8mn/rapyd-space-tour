@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import Style from "./Login.module.scss"
+import Style from "./Auth.module.scss"
 import { Link, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 // todo check correct import
-import { auth, logInWithEmailAndPassword } from "./firebase";
+import { auth, logInWithEmailAndPassword } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 // import auth from "./firebase"
-import GoogleLogin from "./components/GoogleLogin/GoogleLogin";
+import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
 
 function Login() {
 	const [passwordShown, setPasswordShown] = useState(false);

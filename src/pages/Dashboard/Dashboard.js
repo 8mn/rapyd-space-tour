@@ -1,27 +1,28 @@
 import axios from "axios";
 import Style from "./Dashboard.module.scss";
 import { useEffect, useState } from "react";
-import RequestVirtualAccount from "./components/requestVirtualAccount/RequestVirtualAccount";
+import RequestVirtualAccount from "../../components/requestVirtualAccount/RequestVirtualAccount";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, logout, db } from "../src/firebase";
+import { auth, logout, db } from "../../firebase";
 import toast, { Toaster } from "react-hot-toast";
 
-
 import { collection, doc, onSnapshot } from "firebase/firestore";
-import Ticket from "./components/Ticket/Ticket";
-import Navbar from "./components/Navbar/Navbar";
-import AccountCard from "./components/AccountCard/AccountCard";
-import LaunchTimer from "./components/LaunchTimer/LaunchTimer";
+import Ticket from "../../components/Ticket/Ticket";
+import Navbar from "../../components/Navbar/Navbar";
+import AccountCard from "../../components/AccountCard/AccountCard";
+import LaunchTimer from "../../components/LaunchTimer/LaunchTimer";
 
-import rapydTicket from "./assets/rapydTicket.png";
-import PaymentStatus from "./components/PaymentStatus/PaymentStatus";
+import rapydTicket from "../../assets/rapydTicket.png";
+import PaymentStatus from "../../components/PaymentStatus/PaymentStatus";
 
 function Dashboard() {
-	const [walletID, setWalletID] = useState(
-		"ewallet_5d616c29e44b710fcb040c95a94eac72"
-	);
+	// const [walletID, setWalletID] = useState(
+	// 	"ewallet_5d616c29e44b710fcb040c95a94eac72"
+	// );
+
+	const walletID = "ewallet_5d616c29e44b710fcb040c95a94eac72";
 
 	const [virtualAccounts, setVirtualAccounts] = useState([]);
 	const [issuedBankAccount, setIssuedBankAccount] = useState(null);
@@ -99,7 +100,7 @@ function Dashboard() {
 		setPaymentLoading(true);
 		axios
 			.post(
-				"https://rapyd-starliner-backend.herokuapp.com/simulate-payment",
+				"https://rapyd-starliner-relay.herokuapp.com/simulate-payment",
 				AmountData
 			)
 			.then((res) => {
@@ -122,8 +123,6 @@ function Dashboard() {
 				}
 			});
 	};
-
-
 
 	const payments = [
 		{ amount: 50000, currency: "SGD", type: "deposit" },
@@ -190,9 +189,12 @@ function Dashboard() {
 					{!paymentCompleted && (
 						<div className={Style.paymentContainer}>
 							<div className={Style.payment}>
-								<div className={Style.amount}>${amountToPay}</div>
+								<div className={Style.amount}>
+									${amountToPay.toLocaleString()}
+								</div>
 								<button onClick={simulateDepositPayment}>
-									{amountToPay === 50000 ? "Pay Deposit" : "Complete Payment"}
+									{paymentLoading ? "Processing payment..." : "Pay Now"}
+									{/* {amountToPay === 50000 ? "Pay Deposit" : "Complete Payment"} */}
 								</button>
 							</div>
 						</div>

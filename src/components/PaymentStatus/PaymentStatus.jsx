@@ -25,7 +25,9 @@ const PaymentStatus = ({ payments, userDetails, paymentCompleted }) => {
 				>
 					<div>
 						<div className={Style.type}>{payment.type}</div>
-						<div className={Style.price}>${payment.amount}</div>
+						<div className={Style.price}>
+							${payment.amount.toLocaleString()}
+						</div>
 					</div>
 
 					{!userDetails.depositPaid ? (
