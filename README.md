@@ -7,7 +7,7 @@ Payments Application For the Galaxy’s Next Big Space Tourism Company, Rapyd st
 
 # Screenshots
 
-![dashboard](https://user-images.githubusercontent.com/64839201/180822338-6d898b8c-9f77-44c8-ae0b-bf5f03200f38.png)
+![Frame 11](https://user-images.githubusercontent.com/64839201/180933235-1c0fb7e3-641c-4125-a761-a10676ae5a47.jpg)
 
 ![ticket_page](https://user-images.githubusercontent.com/64839201/180824907-f6e9c100-eb44-429a-bc2f-35d3bb75ef08.png)
 
@@ -62,6 +62,8 @@ Open http://localhost:3000 in browser to access the app
 
 
 # Credits
+- Homepage background Photo by <a href="https://unsplash.com/@actionvance?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ActionVance</a> on <a href="https://unsplash.com/s/photos/earth?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
 - Ticket design by [oliviale on codepen](https://codepen.io/oliviale/pen/MZZYyO) 
 - Satoshi font by [Fontshare](https://www.fontshare.com/)
 - Space Grotesk font by [Google Fonts](https://fonts.google.com/)
