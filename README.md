@@ -29,10 +29,40 @@ Install dependencies
 npm install
 ```
 
+
+
+You will need to create a [firebase project](https://firebase.google.com/docs/web/setup) and Replace the following with your app's Firebase project configuration in `src/firebase.js`.
+
+```
+const firebaseConfig = {
+	apiKey: "",
+
+	authDomain: "",
+
+	projectId: "",
+
+	storageBucket: "",
+
+	messagingSenderId: "",
+
+	appId: "",
+
+	measurementId: "",
+};
+
+
+```
+
+> Firebase uses API keys only to identify your app's Firebase project to Firebase services, and not to control access to database or Cloud Storage data, which is done using Firebase Security Rules. For this reason, you do not need to treat API keys for Firebase services as secrets, and you can safely embed them in client code
+
+
 Run the app on your machine
 ```
 npm run start
+
 ```
+
+
 Open http://localhost:3000 in browser to access the app
 
 
@@ -42,7 +72,7 @@ Open http://localhost:3000 in browser to access the app
 
 - The Customer is based in Singapore and the company is based in the US. The high price tag makes accepting credit cards and wire transfers expensive for the business and a hassle for the customer.
 
-- To solve this, use Rapyd’s virtual accounts API
+- To solve this, used Rapyd’s virtual accounts API
 
 
 # Functionalities:

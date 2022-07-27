@@ -40,7 +40,6 @@ const firebaseConfig = {
 	measurementId: "G-PNDWGY16B4",
 };
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -63,7 +62,7 @@ const signInWithGoogle = async () => {
 				authProvider: "google",
 				email: user.email,
 				depositPaid: false,
-				paymentCompleted:false
+				paymentCompleted: false,
 			});
 		}
 	} catch (error) {
