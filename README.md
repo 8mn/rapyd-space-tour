@@ -6,10 +6,11 @@ Payments Application For the Galaxy’s Next Big Space Tourism Company, Rapyd st
 [Demo](https://rapyd-starliner.vercel.app/)
 
 # Screenshots
+![Frame 13](https://user-images.githubusercontent.com/64839201/181241557-78aac0e0-03e7-4acb-901c-3f31667c49c7.jpg)
 
-![Frame 11](https://user-images.githubusercontent.com/64839201/180933235-1c0fb7e3-641c-4125-a761-a10676ae5a47.jpg)
 
-![ticket_page](https://user-images.githubusercontent.com/64839201/180824907-f6e9c100-eb44-429a-bc2f-35d3bb75ef08.png)
+
+![Frame 14](https://user-images.githubusercontent.com/64839201/181241791-9b369c72-3bb8-4234-9a8b-4f9b8211231d.jpg)
 
 # Getting started
 - For starting the app in your machine, open the terminal and enter these commands:
@@ -59,7 +60,6 @@ const firebaseConfig = {
 Run the app on your machine
 ```
 npm run start
-
 ```
 
 
