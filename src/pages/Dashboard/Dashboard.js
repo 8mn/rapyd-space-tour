@@ -22,7 +22,7 @@ function Dashboard() {
 	// 	"ewallet_5d616c29e44b710fcb040c95a94eac72"
 	// );
 
-	const walletID = "ewallet_5d616c29e44b710fcb040c95a94eac72";
+	const walletID = "ewallet_46438dfcb97fe56ab6e133d800424c29";
 
 	const [virtualAccounts, setVirtualAccounts] = useState([]);
 	const [issuedBankAccount, setIssuedBankAccount] = useState(null);
@@ -33,7 +33,6 @@ function Dashboard() {
 	const [paymentCompleted, setPaymentCompleted] = useState(false);
 
 	const [paymentLoading, setPaymentLoading] = useState(false);
-	
 
 	const [user, loading, error] = useAuthState(auth);
 	const navigate = useNavigate();
@@ -67,6 +66,15 @@ function Dashboard() {
 			setIssuedBankAccount(virtualAccountsArr[0].issuedBankAccountId);
 			virtualAccountsArr = [];
 		});
+
+		// axios
+		// 	.get("http://localhost:5000/get-virtual-accounts")
+		// 	.then((res) => {
+		// 		console.log(res);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
 	};
 
 	const getUserDetails = async () => {
@@ -132,7 +140,19 @@ function Dashboard() {
 
 	return (
 		<div className={Style.App}>
-			<Toaster position="top-center" reverseOrder={false} />
+			<Toaster
+				position="top-center"
+				reverseOrder={false}
+				toastOptions={{
+					duration: 7000,
+
+					success: {
+						theme: {
+							background: "#31f2cc",
+						},
+					},
+				}}
+			/>
 			{user && userDetails && (
 				<>
 					<Navbar userDetails={userDetails} />
